@@ -29,8 +29,7 @@ export function Home() {
       {
         text: 'Sim',
         onPress: () => {
-          handleRemove(name);
-          Alert.alert("Deletado!");
+          setParticipants(prevState => prevState.filter((participant: string) => participant !== name));
         }
       },
       {
@@ -40,13 +39,6 @@ export function Home() {
     ]);
   };
 
-  const handleRemove = (name: string) => {
-    participants.find((participant: string, key) => {
-      if(participant === name) {
-        participants.splice(key, 1);
-      }
-    });
-  }
   
   return (
     <View style={styles.container}>
